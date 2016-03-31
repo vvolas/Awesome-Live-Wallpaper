@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--<landscape>-->
+        <!--<adjustedGIF>-->
+            <!--<fileName>Bunchie.gif</fileName>-->
+            <!--<scale></scale>-->
+            <!--<x></x>-->
+            <!--<y></y>-->
+            <!--<fps></fps>-->
+        <!--</adjustedGIF>-->
+        <!--<adjustedGIF>-->
+            <!--<fileName></fileName>-->
+            <!--<scale></scale>-->
+            <!--<x></x>-->
+            <!--<y></y>-->
+            <!--<fps></fps>-->
+        <!--</adjustedGIF>-->
+        <!--<randomBitmapScroller>-->
+
+        <!--</randomBitmapScroller>-->
+
+
+    <!--</landscape>-->
+    <!--<portrait>-->
+
+    <!--</portrait>-->
+</resources>
