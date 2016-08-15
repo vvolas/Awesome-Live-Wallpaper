@@ -13,6 +13,9 @@ public class SettingsActivity extends Activity {
     public static final String AA_AND_DITHER = "AA_and_Dither";
     public static final String B_FILTER = "BFilter";
 
+    public static boolean AAandDitherValue = false;
+    public static boolean BfilterValue = false;
+
     @Override
     public void onCreate(Bundle savedInstance) {
         super.onCreate(savedInstance);

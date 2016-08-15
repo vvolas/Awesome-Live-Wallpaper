@@ -34,7 +34,7 @@ public class AwesomeSun extends AdjustedBitmap{
 
         raysPaint = new Paint();
         raysPaint.setStyle(Paint.Style.FILL_AND_STROKE);
-        raysPaint.setAntiAlias(true);
+        raysPaint.setAntiAlias(SettingsActivity.AAandDitherValue);
         raysPaint.setColor(Color.rgb(254, 222, 88));
 
         rayTriangle = new Path();

@@ -19,6 +19,8 @@ public class AdjustedBitmap extends CoordinateAdapter {
     protected Bitmap bitmap;
     protected Paint bitmapPaint;
     protected String fileName;
+    protected boolean AntialiasingDither = false;
+    protected boolean BFilter = false;
 
     public AdjustedBitmap(String filename) {
         this.fileName = filename;
@@ -37,11 +39,12 @@ public class AdjustedBitmap extends CoordinateAdapter {
         setImgResolution(bitmap.getWidth(),bitmap.getHeight());
 
         bitmapPaint = new Paint();
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(utils.getContext());
-        Boolean value=prefs.getBoolean(SettingsActivity.AA_AND_DITHER, false);
-        bitmapPaint.setAntiAlias(value);
-        bitmapPaint.setDither(value);
-        bitmapPaint.setFilterBitmap(prefs.getBoolean(SettingsActivity.B_FILTER, false));
+//        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(utils.getContext());
+//        AntialiasingDither=prefs.getBoolean(SettingsActivity.AA_AND_DITHER, false);
+//        BFilter=prefs.getBoolean(SettingsActivity.B_FILTER, false);
+        bitmapPaint.setAntiAlias(SettingsActivity.AAandDitherValue);
+        bitmapPaint.setDither(SettingsActivity.AAandDitherValue);
+        bitmapPaint.setFilterBitmap(SettingsActivity.BfilterValue);
     }
 
     public void setBitmapPaint(Paint paint) {

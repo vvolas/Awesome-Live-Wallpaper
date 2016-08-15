@@ -114,15 +114,17 @@ public class AwesomeWallpaperService extends WallpaperService {
         @Override
         public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
             Log.v(TAG, "prefs changed");
-            if (key.equals(SettingsActivity.B_FILTER) || key.equals(SettingsActivity.AA_AND_DITHER)) {
-                BitmapHolder.DeleteInstance();
-                animator = new Animator();
-                animator.setScreenMode(getResources().getConfiguration().orientation);
-                Log.v(TAG, "quality changed in preference");
+            if (key.equals(SettingsActivity.B_FILTER) ) {
+                SettingsActivity.BfilterValue=sharedPreferences.getBoolean(key,false);
+
+            } else if (key.equals(SettingsActivity.AA_AND_DITHER)) {
+                SettingsActivity.AAandDitherValue=sharedPreferences.getBoolean(key,false);
             }
 
-
-
+            BitmapHolder.DeleteInstance();
+            animator = new Animator();
+            animator.setScreenMode(getResources().getConfiguration().orientation);
+            Log.v(TAG, "quality changed in preference");
         }
 
         private void draw() {
