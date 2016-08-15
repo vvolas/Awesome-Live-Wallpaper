@@ -16,9 +16,17 @@ public class AwesomeWallpaperService extends WallpaperService {
     public static final int frameDuration = 60;
     private String TAG = "WallpaperService";
 
+    private AwesomeWallpaperEngine engine;
+
     @Override
     public WallpaperService.Engine onCreateEngine() {
-        return new AwesomeWallpaperEngine();
+        if (engine!=null) {
+           // engine.painting.stopPainting();
+            Log.e(TAG, "DOUBLE ENGINEsss?");
+            engine = null;
+        }
+        engine = new AwesomeWallpaperEngine();
+        return engine;
     }
 
     private class AwesomeWallpaperEngine extends WallpaperService.Engine {
@@ -70,19 +78,21 @@ public class AwesomeWallpaperService extends WallpaperService {
 
         private void draw() {
             if (visible) {
+                canvas =null;
                 cpuTime = System.currentTimeMillis();
 
-                if (canvas == null) {
+                //TODO This crashes in wallpaper selecting process when screen mode changing
+                try {
                     canvas = surfaceHolder.lockCanvas();
+                    if (canvas != null ) {
+                        animator.draw(canvas);
+                    }
+                    surfaceHolder.unlockCanvasAndPost(canvas);
+                } catch ( Exception e) {
+                    e.printStackTrace();
+                    handler.removeCallbacks(drawFrame);
+                    return;
                 }
-                surfaceHolder.unlockCanvasAndPost(canvas);
-//                wholeFrameDuration = System.currentTimeMillis() - wholeFrameDuration;
-//                Log.d(TAG, "wholeFrameDuration " + wholeFrameDuration);
-//                wholeFrameDuration = System.currentTimeMillis();
-
-                canvas = surfaceHolder.lockCanvas();
-                long time = System.currentTimeMillis();
-                animator.draw(canvas);
 
                 handler.removeCallbacks(drawFrame);
 
