@@ -1,4 +1,5 @@
 *.iml
+*.log
 .directory
 .gradle
 /local.properties
