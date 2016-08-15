@@ -1,9 +1,11 @@
 package com.wolas.awesomewallpaper;
 
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.preference.PreferenceManager;
 import android.util.Log;
 
 import java.io.IOException;
@@ -35,9 +37,11 @@ public class AdjustedBitmap extends CoordinateAdapter {
         setImgResolution(bitmap.getWidth(),bitmap.getHeight());
 
         bitmapPaint = new Paint();
-        //bitmapPaint.setAntiAlias(true);
-        //bitmapPaint.setDither(true);
-        bitmapPaint.setFilterBitmap(true);
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(utils.getContext());
+        Boolean value=prefs.getBoolean(SettingsActivity.AA_AND_DITHER, false);
+        bitmapPaint.setAntiAlias(value);
+        bitmapPaint.setDither(value);
+        bitmapPaint.setFilterBitmap(prefs.getBoolean(SettingsActivity.B_FILTER, false));
     }
 
     public void setBitmapPaint(Paint paint) {

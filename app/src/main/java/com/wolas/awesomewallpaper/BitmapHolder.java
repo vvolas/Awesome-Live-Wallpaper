@@ -23,6 +23,10 @@ public class BitmapHolder {
         return instance;
     }
 
+    public static void DeleteInstance () {
+        instance = null;
+    }
+
     private BitmapHolder() {
         hm = new HashMap<>();
         context = Utils.getInstance().getContext();

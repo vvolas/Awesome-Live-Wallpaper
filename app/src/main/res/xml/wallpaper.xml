@@ -3,5 +3,7 @@
 <wallpaper
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:label="Alive Wallpaper"
-    android:thumbnail="@mipmap/ic_launcher">
+    android:thumbnail="@mipmap/ic_launcher"
+    android:settingsActivity="com.wolas.awesomewallpaper.SettingsActivity">
+
 </wallpaper>

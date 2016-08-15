@@ -11,6 +11,7 @@
             android:name=".AwesomeWallpaperService"
             android:enabled="true"
             android:label="Awesome Live Wallpaper"
+            android:exported="true"
             android:permission="android.permission.BIND_WALLPAPER">
             <intent-filter>
                 <action android:name="android.service.wallpaper.WallpaperService" />
@@ -19,6 +20,10 @@
                 android:name="android.service.wallpaper"
                 android:resource="@xml/wallpaper"></meta-data>
         </service>
+        <activity android:name="com.wolas.awesomewallpaper.SettingsActivity"
+            android:label="Livewallpaper Settings"
+            android:exported="true">
+        </activity>
     </application>
     <uses-feature
         android:name="android.software.live_wallpaper"
