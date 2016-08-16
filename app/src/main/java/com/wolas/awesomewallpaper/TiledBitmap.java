@@ -25,11 +25,11 @@ public class TiledBitmap extends AdjustedBitmap {
         this.topBoundary = topPercent;
         this.botBoundary = botPercent;
 
-        xTileCount=deviceResolution.x / imgResolution.x + 2;
+        xTileCount=(int)(deviceResolution.x / imgResolution.x) + 2;
 
         float top = deviceResolution.y * topBoundary /100;
         float bot = deviceResolution.y * botBoundary /100;
-        yTileCount=(int)(bot-top) / imgResolution.y + 2;
+        yTileCount=(int)((bot-top) / imgResolution.y) + 2;
 
         coordinates.y = top;
 

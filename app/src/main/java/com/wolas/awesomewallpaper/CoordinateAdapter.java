@@ -13,8 +13,8 @@ public class CoordinateAdapter implements Comparable <CoordinateAdapter> {
     private String TAG= "CoordinateAdapter";
 
     protected Utils utils;
-    protected Point deviceResolution;
-    protected Point imgResolution;
+    protected PointF deviceResolution;
+    protected PointF imgResolution;
 
     protected PointF coordinates;           // if scaling applied becomes inacurate due layer overlaping
     protected PointF centeredCoordinates;   //actual coordinates pointing to img center
@@ -47,7 +47,7 @@ public class CoordinateAdapter implements Comparable <CoordinateAdapter> {
     }
 
     public void setImgResolution(int xResolution, int yResolution) {
-        imgResolution = new Point(xResolution, yResolution);
+        imgResolution = new PointF(xResolution, yResolution);
     }
 
     public void setCoordinates(float xPercent, float yPercent, boolean centeredBitmap) {

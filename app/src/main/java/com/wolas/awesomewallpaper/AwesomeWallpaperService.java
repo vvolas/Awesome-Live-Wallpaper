@@ -135,9 +135,15 @@ public class AwesomeWallpaperService extends WallpaperService {
                 //TODO This crashes in wallpaper selecting process when screen mode changing
                 try {
                     canvas = surfaceHolder.lockCanvas();
-                    if (canvas != null ) {
-                        animator.draw(canvas);
-                    }
+                } catch ( Exception e) {
+                    e.printStackTrace();
+                    handler.removeCallbacks(drawFrame);
+                    return;
+                }
+                if (canvas != null ) {
+                    animator.draw(canvas);
+                }
+                try {
                     surfaceHolder.unlockCanvasAndPost(canvas);
                 } catch ( Exception e) {
                     e.printStackTrace();

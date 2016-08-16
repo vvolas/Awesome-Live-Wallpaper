@@ -2,6 +2,7 @@ package com.wolas.awesomewallpaper;
 
 import android.content.Context;
 import android.graphics.Point;
+import android.graphics.PointF;
 import android.util.Log;
 import android.view.Display;
 import android.view.WindowManager;
@@ -12,7 +13,7 @@ import android.view.WindowManager;
 public class Utils {
     private static final String TAG = "Utils";
     private Context context = null;
-    private Point resolution = null;
+    private PointF resolution = null;
     private Integer orientation = null;
     private static Utils ref;
 
@@ -40,19 +41,21 @@ public class Utils {
         return context;
     }
 
-    public Point getDeviceResolution () {
+    public PointF getDeviceResolution () {
         if (resolution == null) {
-            resolution = new Point();
+            resolution = new PointF();
             WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
             Display display = wm.getDefaultDisplay();
-            display.getSize(resolution);
+            Point out = new Point();
+            display.getSize(out);
+            resolution.set(out.x,out.y);
         }
         return resolution;
     }
 
     public void setDeviceResolution(int width, int height) {
         if (resolution == null) {
-            resolution = new Point();
+            resolution = new PointF();
         }
         this.resolution.x = width;
         this.resolution.y = height;
